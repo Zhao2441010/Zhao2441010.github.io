@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22 # 改成了 22，消除那个黄色的警告
-          cache: 'npm'     # 改用 npm 缓存
+
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
