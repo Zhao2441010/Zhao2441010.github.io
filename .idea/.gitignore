@@ -1,0 +1,45 @@
+# 默认忽略的文件
+/shelf/
+/workspace.xml
+
+#VuePress
+# 依赖包
+node_modules/
+
+# 日志
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VuePress 特有的缓存和构建产物
+docs/.vuepress/.cache/
+docs/.vuepress/.temp/
+docs/.vuepress/dist/
+
+# 环境变量（如果使用了 .env 文件）
+.env
+.env.local
+
+#Java
+# 编译后的 class 文件
+*.class
+
+# Maven 构建输出目录
+target/
+
+# 日志文件
+*.log
+
+# 打包文件（通常由构建工具生成，非源码）
+*.jar
+*.war
+*.ear
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# 操作系统
+.DS_Store
+Thumbs.db
