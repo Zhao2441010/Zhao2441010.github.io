@@ -1,19 +1,15 @@
 name: Deploy VuePress site to Pages
 
 on:
-  # 在推送到 main 分支时触发
   push:
     branches: ["main"]
-  # 允许你从 Actions 选项卡手动运行此工作流
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许同时有一个并发的部署，跳过排队中的运行
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -25,30 +21,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22 # 改成了 22，消除那个黄色的警告
+          cache: 'npm'     # 改用 npm 缓存
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install     # 使用 npm 安装依赖
 
       - name: Build with VuePress
-        run: pnpm docs:build
+        run: npm run docs:build # 使用 npm 运行构建命令
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 这里必须和你 VuePress 的构建输出目录一致
           path: 'docs/.vuepress/dist'
 
   deploy:
